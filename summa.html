@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposal for My Love ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      color: #333;
+      text-align: center;
+      padding: 2rem;
+    }
+    header {
+      padding-top: 2rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .heart {
+      font-size: 2rem;
+      color: red;
+      animation: beat 1s infinite;
+    }
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    section {
+      margin: 2rem auto;
+      max-width: 600px;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    .button {
+      margin-top: 2rem;
+      background: #ff6f91;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .button:hover {
+      background: #ff3d6a;
+    }
+    .hidden {
+      display: none;
+    }
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+    input, #photoUpload {
+      margin: 0.5rem;
+      padding: 0.6rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+    }
+    #photoPreview {
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: 50%;
+      border: 8px solid red;
+      padding: 4px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Music -->
+  <audio autoplay loop hidden>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <header id="capture">
+    <h1>For <span id="gfName">the Love of My Life</span> <span class="heart">❤️</span></h1>
+    <p>From <span id="myName">someone who loves you deeply</span></p>
+  </header>
+
+  <section>
+    <h2>Enter Your Names</h2>
+    <p>This will personalize the proposal just for you!</p>
+    <input type="text" id="yourName" placeholder="Your Name">
+    <input type="text" id="loverName" placeholder="Her Name">
+    <br>
+    <input type="file" id="photoUpload" accept="image/*">
+    <br>
+    <img id="photoPreview" class="hidden" alt="Couple Photo" />
+    <br>
+    <button class="button" onclick="setNames()">Start the Surprise</button>
+  </section>
+
+  <section>
+    <h2>Our Story</h2>
+    <p>From the moment we met, you changed my world. Every moment with you has been pure magic.</p>
+  </section>
+
+  <section>
+    <h2>A Special Message</h2>
+    <p>You are the most beautiful soul I’ve ever known. Thank you for being my light, my smile, and my home.</p>
+  </section>
+
+  <section>
+    <h2>The Big Question</h2>
+    <p>I want to spend forever with you...</p>
+    <button class="button" onclick="propose()">Will You Marry Me?</button>
+    <div id="yesMessage" class="hidden">
+      <h2>She said YES! 💍🎉</h2>
+      <button class="button" onclick="downloadScreenshot()">📸 Save This Moment</button>
+    </div>
+    <canvas class="confetti hidden" id="confetti"></canvas>
+  </section>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script>
+    function setNames() {
+      const yourName = document.getElementById('yourName').value.trim();
+      const loverName = document.getElementById('loverName').value.trim();
+      if (yourName && loverName) {
+        document.getElementById('myName').textContent = yourName;
+        document.getElementById('gfName').textContent = loverName;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Please enter both names to personalize the proposal!');
+      }
+    }
+
+    document.getElementById('photoUpload').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = document.getElementById('photoPreview');
+          img.src = e.target.result;
+          img.classList.remove('hidden');
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function propose() {
+      document.getElementById('yesMessage').classList.remove('hidden');
+      const canvas = document.getElementById('confetti');
+      canvas.classList.remove('hidden');
+      startConfetti(canvas);
+    }
+
+    function startConfetti(canvas) {
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const confetti = [];
+      for (let i = 0; i < 300; i++) {
+        confetti.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 6 + 4,
+          d: Math.random() * 50 + 10,
+          color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+          tilt: Math.random() * 10 - 10
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        confetti.forEach(c => {
+          ctx.beginPath();
+          ctx.fillStyle = c.color;
+          ctx.fillRect(c.x, c.y, c.r, c.r);
+        });
+        update();
+        requestAnimationFrame(draw);
+      }
+
+      function update() {
+        confetti.forEach(c => {
+          c.y += Math.cos(c.d / 10) + 1 + c.r / 2;
+          c.x += Math.sin(c.d / 10);
+          if (c.y > canvas.height) {
+            c.y = -10;
+            c.x = Math.random() * canvas.width;
+          }
+        });
+      }
+      draw();
+    }
+
+    function downloadScreenshot() {
+      html2canvas(document.body).then(function(canvas) {
+        const link = document.createElement('a');
+        link.download = 'proposal-screenshot.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
