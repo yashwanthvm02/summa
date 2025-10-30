@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Proposal for My Love ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My proposal for sam 💖</title>
   <style>
     * {
       margin: 0;
@@ -11,221 +11,137 @@
       box-sizing: border-box;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #ff9a9e, #fad0c4);
-      color: #333;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       text-align: center;
-      padding: 2rem;
+      color: #333;
+      overflow: hidden;
     }
-    header {
-      padding-top: 2rem;
+    h1, h2, h3, p {
+      margin: 1rem;
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+      font-size: 2.8rem;
+      color: #ff0055;
+      text-shadow: 1px 1px 2px #fff;
     }
     .heart {
-      font-size: 2rem;
       color: red;
       animation: beat 1s infinite;
     }
     @keyframes beat {
       0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.2); }
+      50% { transform: scale(1.3); }
     }
-    section {
-      margin: 2rem auto;
-      max-width: 600px;
-      background: #fff;
-      padding: 2rem;
-      border-radius: 1rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    .button {
-      margin-top: 2rem;
-      background: #ff6f91;
-      color: white;
-      border: none;
+    .btn {
       padding: 1rem 2rem;
-      font-size: 1.2rem;
+      margin: 1rem;
+      border: none;
       border-radius: 2rem;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
-    .button:hover {
-      background: #ff3d6a;
+    .yes {
+      background: #ff477e;
+      color: white;
+    }
+    .no {
+      background: #eee;
+      color: #333;
+      position: absolute;
+    }
+    .yes:hover {
+      background: #ff0055;
+      transform: scale(1.1);
     }
     .hidden {
       display: none;
     }
-    .confetti {
+    #final {
+      font-size: 2rem;
+      color: #ff0055;
+      margin-top: 2rem;
+      animation: fadeIn 2s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .story {
+      max-width: 600px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .music {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-    }
-    input, #photoUpload {
-      margin: 0.5rem;
-      padding: 0.6rem;
+      bottom: 20px;
+      right: 20px;
       font-size: 1rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-    }
-    #photoPreview {
-      margin-top: 1rem;
-      max-width: 100%;
-      border-radius: 50%;
-      border: 8px solid red;
-      padding: 4px;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 20px rgba(255, 0, 0, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
-      }
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <!-- Background Music -->
-  <audio autoplay loop hidden>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
 
-  <header id="capture">
-    <h1>For <span id="gfName">the Love of My Life</span> <span class="heart">❤️</span></h1>
-    <p>From <span id="myName">someone who loves you deeply</span></p>
-  </header>
+  <div id="page1" class="story">
+    <h2>Hey you 👋</h2>
+    <p>I’ve been meaning to say something for a while now... something that’s been jumping around in my brain like popcorn 🍿</p>
+    <button class="btn yes" onclick="nextPage(2)">Go on 😏</button>
+  </div>
 
-  <section>
-    <h2>Enter Your Names</h2>
-    <p>This will personalize the proposal just for you!</p>
-    <input type="text" id="yourName" placeholder="Your Name">
-    <input type="text" id="loverName" placeholder="Her Name">
-    <br>
-    <input type="file" id="photoUpload" accept="image/*">
-    <br>
-    <img id="photoPreview" class="hidden" alt="Couple Photo" />
-    <br>
-    <button class="button" onclick="setNames()">Start the Surprise</button>
-  </section>
+  <div id="page2" class="story hidden">
+    <h2>So here it is... 💌</h2>
+    <p>Every time you smile, my brain kinda crashes...  
+    like an old Windows XP PC trying to run GTA 6 😅</p>
+    <p>And every time you talk, I forget what I was about to say (probably something dumb 😜).</p>
+    <button class="btn yes" onclick="nextPage(3)">Aww, continue 💕</button>
+  </div>
 
-  <section>
-    <h2>Our Story</h2>
-    <p>From the moment we met, you changed my world. Every moment with you has been pure magic.</p>
-  </section>
+  <div id="page3" class="story hidden">
+    <h1>So... I have just one question! <span class="heart">❤️</span></h1>
+    <h3>Will you be my gf and love of my life(🐸)?</h3> 
+    <button class="btn yes" onclick="sayYes()">Yes 💘</button>
+    <button class="btn no" onmouseover="moveButton()" onclick="moveButton()">No (f*ck yash)😝</button>
+  </div>
 
-  <section>
-    <h2>A Special Message</h2>
-    <p>You are the most beautiful soul I’ve ever known. Thank you for being my light, my smile, and my home.</p>
-  </section>
+  <div id="page4" class="story hidden">
+    <h1>YAY!!! 💍🎉</h1>
+    <p>You said yes! I knew it 😍</p>
+    <p>Now we officially start our legendary story ❤️  
+    - Late night talks 🌙  
+    - Random laughter 😂  
+    - Countless memories 💫  
+    - And me annoying you forever 😈</p>
+    <h2 id="final">Love you more than pizza 🍕❤️</h2>
+  </div>
 
-  <section>
-    <h2>The Big Question</h2>
-    <p>I want to spend forever with you...</p>
-    <button class="button" onclick="propose()">Will You Marry Me?</button>
-    <div id="yesMessage" class="hidden">
-      <h2>She said YES! 💍🎉</h2>
-      <button class="button" onclick="downloadScreenshot()">📸 Save This Moment</button>
-    </div>
-    <canvas class="confetti hidden" id="confetti"></canvas>
-  </section>
+  <p class="music">🎵 Background music: *Imagine romantic tune playing softly...*</p>
 
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script>
-    function setNames() {
-      const yourName = document.getElementById('yourName').value.trim();
-      const loverName = document.getElementById('loverName').value.trim();
-      if (yourName && loverName) {
-        document.getElementById('myName').textContent = yourName;
-        document.getElementById('gfName').textContent = loverName;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        alert('Please enter both names to personalize the proposal!');
-      }
+    const noBtn = document.querySelector('.no');
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
     }
 
-    document.getElementById('photoUpload').addEventListener('change', function(event) {
-      const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const img = document.getElementById('photoPreview');
-          img.src = e.target.result;
-          img.classList.remove('hidden');
-        }
-        reader.readAsDataURL(file);
-      }
-    });
-
-    function propose() {
-      document.getElementById('yesMessage').classList.remove('hidden');
-      const canvas = document.getElementById('confetti');
-      canvas.classList.remove('hidden');
-      startConfetti(canvas);
+    function nextPage(num) {
+      document.querySelectorAll('.story').forEach(div => div.classList.add('hidden'));
+      document.getElementById('page' + num).classList.remove('hidden');
     }
 
-    function startConfetti(canvas) {
-      const ctx = canvas.getContext('2d');
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      const confetti = [];
-      for (let i = 0; i < 300; i++) {
-        confetti.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 6 + 4,
-          d: Math.random() * 50 + 10,
-          color: `hsl(${Math.random() * 360}, 70%, 60%)`,
-          tilt: Math.random() * 10 - 10
-        });
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        confetti.forEach(c => {
-          ctx.beginPath();
-          ctx.fillStyle = c.color;
-          ctx.fillRect(c.x, c.y, c.r, c.r);
-        });
-        update();
-        requestAnimationFrame(draw);
-      }
-
-      function update() {
-        confetti.forEach(c => {
-          c.y += Math.cos(c.d / 10) + 1 + c.r / 2;
-          c.x += Math.sin(c.d / 10);
-          if (c.y > canvas.height) {
-            c.y = -10;
-            c.x = Math.random() * canvas.width;
-          }
-        });
-      }
-      draw();
-    }
-
-    function downloadScreenshot() {
-      html2canvas(document.body).then(function(canvas) {
-        const link = document.createElement('a');
-        link.download = 'proposal-screenshot.png';
-        link.href = canvas.toDataURL();
-        link.click();
-      });
+    function sayYes() {
+      document.querySelectorAll('.story').forEach(div => div.classList.add('hidden'));
+      document.getElementById('page4').classList.remove('hidden');
     }
   </script>
 </body>
